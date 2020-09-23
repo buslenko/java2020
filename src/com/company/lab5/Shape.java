@@ -4,7 +4,6 @@ import java.sql.SQLOutput;
 
 public abstract class Shape {
     String color;
-    Object Shapes;
 
     public Shape(String color){
         this.color = color;
