@@ -1,62 +1,104 @@
 package com.company.lab15;
 
-import java.util.ArrayList;
-
 public class Collection {
-    ArrayList<Integer> mas = new ArrayList<Integer>();
+    int[] arr = new int[] {1, 2, 3, 4, 5};
+    int size = 5;
 
-    public Collection(int ... args){
-        for (int i=0;i<args.length;i++){
-            mas.add(args[i]);
+
+    Collection(int[] arr, int size){
+        setArr(arr);
+        setSize(size);
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public void setArr(int[] arr) {
+        this.arr = arr;
+    }
+
+    public void add(int k){ //k - new elem
+        int newsize = size+1;
+        int[] arrcopy = new int[newsize];
+        for(int i = 0; i<newsize-1; i++){
+            arrcopy[i] = arr[i];
+        }
+        arrcopy[newsize-1] = k;
+
+        arr = new int[newsize];
+        System.arraycopy(arrcopy, 0, arr, 0, newsize);
+        size = newsize;
+        setSize(size);
+        setArr(arr);
+
+        for (int i = 0; i <newsize; i++) {
+            System.out.println(arr[i]);
         }
     }
 
-    void add(int element){
-        mas.add(element);
-    }
-
-    void delete(int element){
-        int ind;
-        for (int i=0;i<mas.size();i++){
-            if (mas.get(i) == element) {mas.remove(i);
-                break;}
+    public void del(){
+        int newsize = size-1;
+        int[] arrcopy = new int[newsize];
+        for (int i = 0; i <newsize; i++) {
+            arrcopy[i] = arr[i];
         }
-
-    }
-
-    int searchValue(int value){
-        for (int i=0;i<mas.size();i++){
-            if (mas.get(i) == value ) return mas.get(i);
+        arr = new int[newsize];
+        System.arraycopy(arrcopy, 0, arr, 0, newsize);
+        size = newsize;
+        setSize(size);
+        setArr(arr);
+        for (int i = 0; i < size; i++) {
+            System.out.println(arr[i]);
         }
-        return -1;
     }
 
-    int searchInd(int index){
-        return mas.get(index);
-    }
-
-    int getMax(){
-        int now = mas.get(0);
-        for (int i=0;i<mas.size();i++){
-            if (mas.get(i) > now) now = mas.get(i);
+    public void indSearch(int ind){
+        if((ind>size--)||(ind<0)){
+            System.out.println("Индекс неверный");
         }
-        return now;
+        else{
+            System.out.println(arr[ind]);
+        }
     }
 
-    int getMin(){
-        int now = mas.get(0);
-        for (int i=0;i<mas.size();i++){
-            if (mas.get(i) < now) now = mas.get(i);
+    public void elemSearch(int elem){
+        for (int i = 0; i <size; i++) {
+            if(arr[i] == elem) {
+                System.out.println(i);
+            }
         }
-        return now;
     }
 
-    double getMiddleArif(){
-        double sum=0;
-        for (int i=0;i<mas.size();i++){
-            sum+=mas.get(i);
+    public void searchMax(){
+        int max = arr[0];
+
+        for (int i = 0; i <size; i++) {
+            if(arr[i]>max){
+                max = arr[i];
+            }
         }
-        return sum/mas.size();
+        System.out.println(max);
+    }
+
+    public void searchMin(){
+        int min = arr[0];
+
+        for (int i = 0; i <size; i++) {
+            if (arr[i]<min){
+                min = arr[i];
+            }
+        }
+        System.out.println(min);
+    }
+
+    public void searchAverg(){
+        double av = 0;
+        for (int i = 0; i < size; i++) {
+            av+=arr[i];
+        }
+        av/=size;
+        System.out.println(av);
     }
 
 }
