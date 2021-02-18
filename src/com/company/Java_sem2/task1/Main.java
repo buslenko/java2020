@@ -11,7 +11,7 @@ public class Main {
 
     public static void a (int mass []){
         for (int i=4;i>=0;i--){
-            System.out.println(mass[i]);
+            System.out.print(mass[i]);
         }
 
     }
