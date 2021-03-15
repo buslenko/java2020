@@ -21,8 +21,8 @@ public class Human {
     public String toString() {
         return "Human{" +
                 "age=" + age +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName +
+                ", lastName='" + lastName +
                 ", birthDay=" + birthDay +
                 ", weight=" + weight +
                 '}';
